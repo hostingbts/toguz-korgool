@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/toguz-korgool/static/css/main.37159ba8.css",
-    "main.js": "/toguz-korgool/static/js/main.d937cd06.js",
+    "main.css": "/toguz-korgool/static/css/main.e8e280eb.css",
+    "main.js": "/toguz-korgool/static/js/main.e104044e.js",
     "index.html": "/toguz-korgool/index.html",
-    "main.37159ba8.css.map": "/toguz-korgool/static/css/main.37159ba8.css.map",
-    "main.d937cd06.js.map": "/toguz-korgool/static/js/main.d937cd06.js.map"
+    "main.e8e280eb.css.map": "/toguz-korgool/static/css/main.e8e280eb.css.map",
+    "main.e104044e.js.map": "/toguz-korgool/static/js/main.e104044e.js.map"
   },
   "entrypoints": [
-    "static/css/main.37159ba8.css",
-    "static/js/main.d937cd06.js"
+    "static/css/main.e8e280eb.css",
+    "static/js/main.e104044e.js"
   ]
 }
