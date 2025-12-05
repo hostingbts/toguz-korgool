@@ -37,6 +37,7 @@ import {
   getPitDisplayNumber,
   calculateMoveSteps 
 } from '../game/gameLogic';
+import soundManager from '../utils/sounds';
 import './GameBoard.css';
 
 function GameBoard({ board, onMove, currentPlayer, gameMode, playerColor = PLAYERS.WHITE, disabled = false }) {
@@ -217,6 +218,9 @@ function GameBoard({ board, onMove, currentPlayer, gameMode, playerColor = PLAYE
           workingBoard.pits[step.toPit] = (workingBoard.pits[step.toPit] || 0) + step.stones;
           setAnimationState({ type: 'sowing', pit: step.toPit, stones: workingBoard.pits[step.toPit] });
           
+          // Play sound effect for stone movement
+          soundManager.playStoneMove();
+          
           // Update displayBoard in real-time as stones are placed
           if (updateDisplayBoard) {
             updateDisplayBoard(JSON.parse(JSON.stringify(workingBoard)));
@@ -234,6 +238,9 @@ function GameBoard({ board, onMove, currentPlayer, gameMode, playerColor = PLAYE
           workingBoard.kazans[step.toKazan] += step.stones;
           setAnimationState({ type: 'capture', kazan: step.toKazan, stones: workingBoard.kazans[step.toKazan] });
           
+          // Play sound effect for capture
+          soundManager.playCapture();
+          
           // Update displayBoard to show capture
           if (updateDisplayBoard) {
             updateDisplayBoard(JSON.parse(JSON.stringify(workingBoard)));
@@ -246,6 +253,9 @@ function GameBoard({ board, onMove, currentPlayer, gameMode, playerColor = PLAYE
           await new Promise(resolve => setTimeout(resolve, 300));
           workingBoard.tuz[step.player] = step.pit;
           setAnimationState({ type: 'tuz_created', pit: step.pit });
+          
+          // Play sound effect for tuz creation
+          soundManager.playTuzCreated();
           
           // Update displayBoard to show tuz
           if (updateDisplayBoard) {
@@ -262,6 +272,9 @@ function GameBoard({ board, onMove, currentPlayer, gameMode, playerColor = PLAYE
             workingBoard.kazans[step.toKazan] += step.stones;
             setAnimationState({ type: 'tuz_collect', kazan: step.toKazan, stones: workingBoard.kazans[step.toKazan] });
             
+            // Play sound effect for tuz collection
+            soundManager.playCapture();
+            
             // Update displayBoard to show tuz collection
             if (updateDisplayBoard) {
               updateDisplayBoard(JSON.parse(JSON.stringify(workingBoard)));
@@ -274,6 +287,9 @@ function GameBoard({ board, onMove, currentPlayer, gameMode, playerColor = PLAYE
             workingBoard.pits[step.fromPit] = 0;
             workingBoard.kazans[step.toKazan] += step.stones;
             setAnimationState({ type: 'tuz_collect', kazan: step.toKazan, stones: workingBoard.kazans[step.toKazan] });
+            
+            // Play sound effect for tuz collection
+            soundManager.playCapture();
             
             // Update displayBoard to show tuz collection
             if (updateDisplayBoard) {

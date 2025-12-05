@@ -4,6 +4,10 @@ import './i18n/i18n';
 import './styles/index.css';
 import App from './App';
 
+// Load theme from localStorage on initial load
+const savedTheme = localStorage.getItem('boardTheme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

@@ -1,47 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { DIFFICULTY_LEVELS } from '../game/ai';
+import soundManager from '../utils/sounds';
 import './Settings.css';
 
 function Settings() {
   const { t, i18n } = useTranslation();
   const [soundEffects, setSoundEffects] = useState(true);
-  const [animations, setAnimations] = useState(true);
   const [boardTheme, setBoardTheme] = useState('light');
-  const [aiDifficulty, setAiDifficulty] = useState(DIFFICULTY_LEVELS.MEDIUM);
 
   useEffect(() => {
     // Load settings from localStorage
     const savedSound = localStorage.getItem('soundEffects');
-    const savedAnimations = localStorage.getItem('animations');
     const savedTheme = localStorage.getItem('boardTheme');
-    const savedDifficulty = localStorage.getItem('aiDifficulty');
 
-    if (savedSound !== null) setSoundEffects(savedSound === 'true');
-    if (savedAnimations !== null) setAnimations(savedAnimations === 'true');
-    if (savedTheme) setBoardTheme(savedTheme);
-    if (savedDifficulty) setAiDifficulty(Number(savedDifficulty));
+    if (savedSound !== null) {
+      const soundEnabled = savedSound === 'true';
+      setSoundEffects(soundEnabled);
+      soundManager.setEnabled(soundEnabled);
+    }
+    if (savedTheme) {
+      setBoardTheme(savedTheme);
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    } else {
+      // Set default theme
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
   }, []);
 
   const handleSoundChange = (value) => {
     setSoundEffects(value);
     localStorage.setItem('soundEffects', value);
-  };
-
-  const handleAnimationsChange = (value) => {
-    setAnimations(value);
-    localStorage.setItem('animations', value);
+    soundManager.setEnabled(value);
+    // Play a test sound if enabling
+    if (value) {
+      soundManager.playStoneMove();
+    }
   };
 
   const handleThemeChange = (value) => {
     setBoardTheme(value);
     localStorage.setItem('boardTheme', value);
     document.documentElement.setAttribute('data-theme', value);
-  };
-
-  const handleDifficultyChange = (value) => {
-    setAiDifficulty(value);
-    localStorage.setItem('aiDifficulty', value);
   };
 
   const handleLanguageChange = (lng) => {
@@ -73,23 +72,6 @@ function Settings() {
           </section>
 
           <section className="setting-section">
-            <h2>{t('settings.animations')}</h2>
-            <div className="setting-control">
-              <label className="toggle">
-                <input
-                  type="checkbox"
-                  checked={animations}
-                  onChange={(e) => handleAnimationsChange(e.target.checked)}
-                />
-                <span className="toggle-slider"></span>
-              </label>
-              <span className="setting-label">
-                {animations ? 'On' : 'Off'}
-              </span>
-            </div>
-          </section>
-
-          <section className="setting-section">
             <h2>{t('settings.boardTheme')}</h2>
             <div className="setting-control">
               <select
@@ -99,21 +81,6 @@ function Settings() {
               >
                 <option value="light">{t('settings.light')}</option>
                 <option value="dark">{t('settings.dark')}</option>
-              </select>
-            </div>
-          </section>
-
-          <section className="setting-section">
-            <h2>{t('settings.aiDifficulty')}</h2>
-            <div className="setting-control">
-              <select
-                value={aiDifficulty}
-                onChange={(e) => handleDifficultyChange(Number(e.target.value))}
-                className="difficulty-select"
-              >
-                <option value={DIFFICULTY_LEVELS.EASY}>{t('game.easy')}</option>
-                <option value={DIFFICULTY_LEVELS.MEDIUM}>{t('game.medium')}</option>
-                <option value={DIFFICULTY_LEVELS.HARD}>{t('game.hard')}</option>
               </select>
             </div>
           </section>
