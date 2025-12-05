@@ -3,7 +3,7 @@
   bottom: 30px;
   right: 30px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 15px;
   z-index: 1000;
 }
