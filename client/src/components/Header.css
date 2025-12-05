@@ -68,59 +68,42 @@
 
 .language-selector {
   display: flex;
-  gap: 8px;
   align-items: center;
   margin-left: 10px;
 }
 
-.language-buttons {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.language-btn {
-  padding: 6px 12px;
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: var(--white);
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s;
-  font-weight: 500;
-}
-
-.language-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.language-btn.active {
-  background: var(--white);
-  color: var(--primary-color);
-  font-weight: 600;
-}
-
 .language-dropdown {
-  padding: 6px 12px;
+  padding: 8px 12px;
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: var(--white);
   border-radius: 4px;
+  cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  cursor: pointer;
-  outline: none;
   transition: all 0.3s;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='white' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 12px;
+  padding-right: 32px;
 }
 
 .language-dropdown:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.language-dropdown:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 .language-dropdown option {
   background: var(--primary-color);
   color: var(--white);
+  padding: 8px;
 }
 
 @media (max-width: 768px) {
@@ -154,18 +137,14 @@
 
   .language-selector {
     margin-left: 0;
-    gap: 6px;
   }
 
   .language-dropdown {
     padding: 6px 10px;
-    font-size: 13px;
-    max-width: 80px;
-  }
-
-  .language-btn {
-    padding: 5px 10px;
+    padding-right: 28px;
     font-size: 12px;
+    background-size: 10px;
+    background-position: right 6px center;
   }
 }
 
@@ -194,18 +173,15 @@
   }
 
   .language-selector {
-    gap: 4px;
+    margin-left: 0;
   }
 
   .language-dropdown {
     padding: 5px 8px;
-    font-size: 12px;
-    max-width: 70px;
-  }
-
-  .language-btn {
-    padding: 4px 8px;
+    padding-right: 26px;
     font-size: 11px;
+    background-size: 9px;
+    background-position: right 5px center;
   }
 }
 
