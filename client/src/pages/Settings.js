@@ -40,6 +40,7 @@ function Settings() {
   const handleThemeChange = (value) => {
     setBoardTheme(value);
     localStorage.setItem('boardTheme', value);
+    // Only apply theme to game board, not entire document
     document.documentElement.setAttribute('data-theme', value);
   };
 
