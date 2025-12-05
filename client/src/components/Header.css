@@ -155,17 +155,19 @@
 
   .language-selector {
     margin-left: 0;
-    gap: 6px;
+    gap: 0;
   }
 
   .language-buttons {
-    display: none;
+    display: none !important;
   }
 
   .language-dropdown {
-    display: block;
+    display: block !important;
     padding: 6px 10px;
     font-size: 13px;
+    width: 100%;
+    max-width: 80px;
   }
 
   .language-btn {
@@ -199,17 +201,19 @@
   }
 
   .language-selector {
-    gap: 4px;
+    gap: 0;
   }
 
   .language-buttons {
-    display: none;
+    display: none !important;
   }
 
   .language-dropdown {
-    display: block;
+    display: block !important;
     padding: 5px 8px;
     font-size: 12px;
+    width: 100%;
+    max-width: 70px;
   }
 
   .language-btn {
