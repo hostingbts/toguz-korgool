@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import InstagramFloat from './components/InstagramFloat';
 import Home from './pages/Home';
 import Play from './pages/Play';
@@ -26,6 +27,7 @@ function App() {
             <Route path="/settings" element={<Settings />} />
           </Routes>
         </main>
+        <Footer />
         <InstagramFloat />
       </div>
     </Router>
