@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './Header.css';
@@ -6,6 +6,25 @@ import './Header.css';
 function Header() {
   const { t, i18n } = useTranslation();
   const location = useLocation();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Detect if user is on a mobile device
+    const checkMobile = () => {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      const mobileRegex = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
+      const isMobileDevice = mobileRegex.test(userAgent.toLowerCase());
+      const hasTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isSmallScreen = window.innerWidth <= 768;
+      
+      setIsMobile(isMobileDevice || (hasTouchScreen && isSmallScreen));
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -115,44 +134,47 @@ function Header() {
             {t('common.settings')}
           </Link>
           <div className="language-selector">
-            {/* Desktop: Button group */}
-            <div className="language-buttons">
-              <button
-                className={`language-btn ${i18n.language === 'kg' ? 'active' : ''}`}
-                onClick={() => changeLanguage('kg')}
+            {isMobile ? (
+              /* Mobile: Dropdown */
+              <select
+                className="language-dropdown"
+                value={i18n.language}
+                onChange={(e) => changeLanguage(e.target.value)}
               >
-                KG
-              </button>
-              <button
-                className={`language-btn ${i18n.language === 'kz' ? 'active' : ''}`}
-                onClick={() => changeLanguage('kz')}
-              >
-                KZ
-              </button>
-              <button
-                className={`language-btn ${i18n.language === 'ru' ? 'active' : ''}`}
-                onClick={() => changeLanguage('ru')}
-              >
-                RU
-              </button>
-              <button
-                className={`language-btn ${i18n.language === 'en' ? 'active' : ''}`}
-                onClick={() => changeLanguage('en')}
-              >
-                EN
-              </button>
-            </div>
-            {/* Mobile: Dropdown */}
-            <select
-              className="language-dropdown"
-              value={i18n.language}
-              onChange={(e) => changeLanguage(e.target.value)}
-            >
-              <option value="kg">KG</option>
-              <option value="kz">KZ</option>
-              <option value="ru">RU</option>
-              <option value="en">EN</option>
-            </select>
+                <option value="kg">KG</option>
+                <option value="kz">KZ</option>
+                <option value="ru">RU</option>
+                <option value="en">EN</option>
+              </select>
+            ) : (
+              /* Desktop: Button group */
+              <div className="language-buttons">
+                <button
+                  className={`language-btn ${i18n.language === 'kg' ? 'active' : ''}`}
+                  onClick={() => changeLanguage('kg')}
+                >
+                  KG
+                </button>
+                <button
+                  className={`language-btn ${i18n.language === 'kz' ? 'active' : ''}`}
+                  onClick={() => changeLanguage('kz')}
+                >
+                  KZ
+                </button>
+                <button
+                  className={`language-btn ${i18n.language === 'ru' ? 'active' : ''}`}
+                  onClick={() => changeLanguage('ru')}
+                >
+                  RU
+                </button>
+                <button
+                  className={`language-btn ${i18n.language === 'en' ? 'active' : ''}`}
+                  onClick={() => changeLanguage('en')}
+                >
+                  EN
+                </button>
+              </div>
+            )}
           </div>
         </nav>
       </div>
