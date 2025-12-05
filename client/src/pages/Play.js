@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useFullscreen } from '../contexts/FullscreenContext';
 import { initializeBoard, PLAYERS, GAME_MODES, makeMove } from '../game/gameLogic';
 import { getAIMove, DIFFICULTY_LEVELS } from '../game/ai';
 import GameBoard from '../components/GameBoard';
@@ -9,6 +10,7 @@ import './Play.css';
 
 function Play() {
   const { t } = useTranslation();
+  const { isMobile, enterFullscreen, exitFullscreen } = useFullscreen();
   const [gameMode, setGameMode] = useState(null);
   const [board, setBoard] = useState(null);
   const [playerColor, setPlayerColor] = useState(PLAYERS.WHITE);
@@ -22,8 +24,21 @@ function Play() {
       const newBoard = initializeBoard();
       setBoard(newBoard);
       setMoveHistory([]);
+      // Enter fullscreen on mobile when game starts
+      if (isMobile) {
+        enterFullscreen();
+      }
     }
-  }, [gameMode, board]);
+  }, [gameMode, board, isMobile, enterFullscreen]);
+
+  // Exit fullscreen when leaving game
+  useEffect(() => {
+    return () => {
+      if (isMobile) {
+        exitFullscreen();
+      }
+    };
+  }, [isMobile, exitFullscreen]);
 
   const handleMove = (newBoard) => {
     setBoard(newBoard);
@@ -73,6 +88,16 @@ function Play() {
     setIsAITurn(false);
   };
 
+  const handleExitGame = () => {
+    if (isMobile) {
+      exitFullscreen();
+    }
+    setGameMode(null);
+    setBoard(null);
+    setMoveHistory([]);
+    setIsAITurn(false);
+  };
+
   if (!gameMode) {
     return (
       <div className="page play-page">
@@ -87,7 +112,7 @@ function Play() {
     return (
       <div className="page play-page">
         <div className="container">
-          <OnlineGame onBack={() => setGameMode(null)} />
+          <OnlineGame onBack={handleExitGame} />
         </div>
       </div>
     );
@@ -119,7 +144,7 @@ function Play() {
               {t('common.undo')}
             </button>
           )}
-          <button onClick={() => setGameMode(null)} className="btn btn-secondary">
+          <button onClick={handleExitGame} className="btn btn-secondary">
             {t('common.close')}
           </button>
           {gameMode === GAME_MODES.VS_COMPUTER && (

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useFullscreen } from '../contexts/FullscreenContext';
 import { io } from 'socket.io-client';
 import { initializeBoard, PLAYERS, makeMove } from '../game/gameLogic';
 import GameBoard from './GameBoard';
@@ -9,6 +10,7 @@ const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:5000';
 
 function OnlineGame({ onBack }) {
   const { t } = useTranslation();
+  const { isMobile, enterFullscreen, exitFullscreen } = useFullscreen();
   const [socket, setSocket] = useState(null);
   const [roomCode, setRoomCode] = useState('');
   const [gameState, setGameState] = useState('menu'); // menu, waiting, playing
@@ -18,6 +20,29 @@ function OnlineGame({ onBack }) {
   const [connectionStatus, setConnectionStatus] = useState('disconnected');
   const [inputRoomCode, setInputRoomCode] = useState('');
   const socketRef = useRef(null);
+
+  // Enter fullscreen when game starts playing on mobile
+  useEffect(() => {
+    if (gameState === 'playing' && isMobile) {
+      enterFullscreen();
+    }
+  }, [gameState, isMobile, enterFullscreen]);
+
+  // Exit fullscreen when component unmounts
+  useEffect(() => {
+    return () => {
+      if (isMobile) {
+        exitFullscreen();
+      }
+    };
+  }, [isMobile, exitFullscreen]);
+
+  const handleBack = () => {
+    if (isMobile) {
+      exitFullscreen();
+    }
+    onBack();
+  };
 
   useEffect(() => {
     const newSocket = io(SERVER_URL, {
@@ -155,7 +180,7 @@ function OnlineGame({ onBack }) {
             </div>
           </div>
 
-          <button onClick={onBack} className="btn btn-secondary">
+          <button onClick={handleBack} className="btn btn-secondary">
             {t('common.close')}
           </button>
         </div>
@@ -178,7 +203,7 @@ function OnlineGame({ onBack }) {
               Copy Code
             </button>
           </div>
-          <button onClick={onBack} className="btn">
+          <button onClick={handleBack} className="btn">
             {t('common.close')}
           </button>
         </div>
@@ -208,7 +233,7 @@ function OnlineGame({ onBack }) {
           <button onClick={handleNewGame} className="btn btn-secondary">
             {t('common.newGame')}
           </button>
-          <button onClick={onBack} className="btn btn-secondary">
+          <button onClick={handleBack} className="btn btn-secondary">
             {t('common.close')}
           </button>
         </div>
