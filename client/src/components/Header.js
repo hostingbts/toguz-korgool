@@ -115,30 +115,44 @@ function Header() {
             {t('common.settings')}
           </Link>
           <div className="language-selector">
-            <button
-              className={`language-btn ${i18n.language === 'kg' ? 'active' : ''}`}
-              onClick={() => changeLanguage('kg')}
+            {/* Desktop: Button group */}
+            <div className="language-buttons">
+              <button
+                className={`language-btn ${i18n.language === 'kg' ? 'active' : ''}`}
+                onClick={() => changeLanguage('kg')}
+              >
+                KG
+              </button>
+              <button
+                className={`language-btn ${i18n.language === 'kz' ? 'active' : ''}`}
+                onClick={() => changeLanguage('kz')}
+              >
+                KZ
+              </button>
+              <button
+                className={`language-btn ${i18n.language === 'ru' ? 'active' : ''}`}
+                onClick={() => changeLanguage('ru')}
+              >
+                RU
+              </button>
+              <button
+                className={`language-btn ${i18n.language === 'en' ? 'active' : ''}`}
+                onClick={() => changeLanguage('en')}
+              >
+                EN
+              </button>
+            </div>
+            {/* Mobile: Dropdown */}
+            <select
+              className="language-dropdown"
+              value={i18n.language}
+              onChange={(e) => changeLanguage(e.target.value)}
             >
-              KG
-            </button>
-            <button
-              className={`language-btn ${i18n.language === 'kz' ? 'active' : ''}`}
-              onClick={() => changeLanguage('kz')}
-            >
-              KZ
-            </button>
-            <button
-              className={`language-btn ${i18n.language === 'ru' ? 'active' : ''}`}
-              onClick={() => changeLanguage('ru')}
-            >
-              RU
-            </button>
-            <button
-              className={`language-btn ${i18n.language === 'en' ? 'active' : ''}`}
-              onClick={() => changeLanguage('en')}
-            >
-              EN
-            </button>
+              <option value="kg">KG</option>
+              <option value="kz">KZ</option>
+              <option value="ru">RU</option>
+              <option value="en">EN</option>
+            </select>
           </div>
         </nav>
       </div>

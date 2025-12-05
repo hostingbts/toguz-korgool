@@ -12,8 +12,9 @@ import Settings from './pages/Settings';
 import './styles/App.css';
 
 function App() {
-  // Set basename for GitHub Pages subdirectory
-  const basename = '/toguz-korgool';
+  // Set basename for GitHub Pages subdirectory (only in production)
+  // In development, use empty string so it works on localhost
+  const basename = process.env.NODE_ENV === 'production' ? '/toguz-korgool' : '';
   
   return (
     <Router basename={basename}>
