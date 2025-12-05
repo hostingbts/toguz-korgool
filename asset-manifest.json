@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/toguz-korgool/static/css/main.ed11955c.css",
+    "main.js": "/toguz-korgool/static/js/main.3d0aef7c.js",
+    "index.html": "/toguz-korgool/index.html",
+    "main.ed11955c.css.map": "/toguz-korgool/static/css/main.ed11955c.css.map",
+    "main.3d0aef7c.js.map": "/toguz-korgool/static/js/main.3d0aef7c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ed11955c.css",
+    "static/js/main.3d0aef7c.js"
+  ]
+}
