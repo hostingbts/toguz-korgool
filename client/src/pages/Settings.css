@@ -1,0 +1,140 @@
+.settings-page {
+  padding: 40px 20px;
+}
+
+.settings-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.setting-section {
+  background: var(--white);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px var(--shadow);
+  margin-bottom: 25px;
+}
+
+.setting-section h2 {
+  font-size: 22px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.setting-control {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.setting-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+/* Toggle switch */
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.toggle input:checked + .toggle-slider {
+  background-color: var(--primary-color);
+}
+
+.toggle input:checked + .toggle-slider:before {
+  transform: translateX(26px);
+}
+
+.theme-select,
+.difficulty-select {
+  padding: 10px 15px;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  font-size: 16px;
+  background: var(--white);
+  color: var(--text-color);
+  cursor: pointer;
+  min-width: 200px;
+}
+
+.language-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.lang-btn {
+  padding: 10px 20px;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--primary-color);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.lang-btn:hover {
+  background: var(--bg-color);
+}
+
+.lang-btn.active {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+@media (max-width: 768px) {
+  .setting-section {
+    padding: 20px;
+  }
+
+  .setting-control {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .language-buttons {
+    width: 100%;
+  }
+
+  .lang-btn {
+    flex: 1;
+  }
+}
+
+

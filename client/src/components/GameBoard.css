@@ -1,0 +1,705 @@
+/* Game Board Styles with Organic Oval Design */
+
+.game-board {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #2c1810 0%, #1a0f08 100%);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.game-board::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(139, 69, 19, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  flex-wrap: wrap;
+  gap: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.player-info {
+  flex: 1;
+  min-width: 150px;
+}
+
+.player-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f5e6d3;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.player-name.active {
+  background: rgba(139, 69, 19, 0.6);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(139, 69, 19, 0.4);
+  border-color: rgba(139, 69, 19, 0.8);
+}
+
+.player-name.your-turn {
+  animation: turnPulse 2s infinite;
+  border-color: #d4af37;
+}
+
+@keyframes turnPulse {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(139, 69, 19, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.6);
+  }
+}
+
+.game-status {
+  flex: 1;
+  text-align: center;
+  min-width: 200px;
+}
+
+.turn-indicator {
+  font-size: 20px;
+  font-weight: 700;
+  color: #d4af37;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.game-over {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #8b4513 0%, #654321 100%);
+  border-radius: 8px;
+  animation: pulse 1s infinite;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.board-container {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+}
+
+.pits-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.pits-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.pits-row.user-row {
+  /* User's side (bottom) - emphasized */
+  opacity: 1;
+  filter: brightness(1.1);
+}
+
+.pits-row.opponent-row {
+  /* Opponent's side (top) - slightly dimmed */
+  opacity: 0.85;
+  filter: brightness(0.9);
+}
+
+/* Organic oval pits */
+.pit {
+  flex: 1;
+  aspect-ratio: 1.4;
+  min-width: 70px;
+  min-height: 50px;
+  background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+  border: 3px solid #8b4513;
+  border-radius: 50% / 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.4);
+  overflow: visible;
+  touch-action: manipulation; /* Prevents double-tap zoom on mobile */
+}
+
+.pit:hover:not(:disabled):not(.opponent-pit) {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    0 6px 12px rgba(0, 0, 0, 0.5);
+  border-color: #d4af37;
+}
+
+.pit.valid-move {
+  border-color: #d4af37;
+  border-width: 4px;
+  animation: glow 2s infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 
+      inset 0 2px 4px rgba(255, 255, 255, 0.3),
+      0 0 10px rgba(212, 175, 55, 0.5);
+  }
+  50% {
+    box-shadow: 
+      inset 0 2px 4px rgba(255, 255, 255, 0.4),
+      0 0 20px rgba(212, 175, 55, 0.8);
+  }
+}
+
+.pit.selected {
+  background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+  transform: scale(1.15);
+  border-color: #ffd700;
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.5),
+    0 0 25px rgba(255, 215, 0, 0.8);
+  z-index: 10;
+}
+
+.pit.selected .pit-content {
+  transform: translateY(-5px);
+}
+
+.pit.highlighted {
+  animation: highlightPulse 0.6s ease-out;
+  border-color: #ffd700;
+}
+
+@keyframes highlightPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(255, 215, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+  }
+}
+
+.pit.receiving-stone {
+  animation: receiveStone 0.3s ease-out;
+}
+
+@keyframes receiveStone {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pit.player-pit {
+  border-color: #8b4513;
+}
+
+.pit.opponent-pit {
+  border-color: #654321;
+  opacity: 0.85;
+}
+
+.pit.tuz {
+  background: linear-gradient(135deg, #ffd700 0%, #ffb347 50%, #d4af37 100%);
+  border-color: #d4af37;
+  border-width: 4px;
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+.pit.tuz::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  background: radial-gradient(circle, #ffd700 0%, #d4af37 100%);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  animation: tuzGlow 2s infinite;
+}
+
+@keyframes tuzGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+.pit-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.pit-number {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.stones-count {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2c1810;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.stone-plus {
+  position: absolute;
+  top: -15px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffd700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  animation: fadeUp 0.6s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.tuz-indicator {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  font-size: 20px;
+  color: #ffd700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+  animation: twinkle 1.5s infinite;
+  z-index: 2;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2) rotate(180deg);
+  }
+}
+
+/* Center Kazans */
+.kazans-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 900px;
+}
+
+.kazan-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  max-width: 200px;
+}
+
+.kazan {
+  width: 140px;
+  height: 100px;
+  background: linear-gradient(135deg, #8b4513 0%, #654321 100%);
+  border: 4px solid #d4af37;
+  border-radius: 50% / 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    inset 0 4px 8px rgba(0, 0, 0, 0.4),
+    0 6px 16px rgba(0, 0, 0, 0.5);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.kazan-black {
+  background: #3F3027;
+}
+
+.kazan.pulsing {
+  animation: kazanPulse 0.6s ease-out;
+}
+
+@keyframes kazanPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 
+      inset 0 4px 8px rgba(0, 0, 0, 0.4),
+      0 0 0 0 rgba(212, 175, 55, 0.8);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 
+      inset 0 4px 8px rgba(0, 0, 0, 0.4),
+      0 0 0 20px rgba(212, 175, 55, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 
+      inset 0 4px 8px rgba(0, 0, 0, 0.4),
+      0 0 0 0 rgba(212, 175, 55, 0);
+  }
+}
+
+.kazan-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.kazan-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #f5e6d3;
+  text-transform: uppercase;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.kazan-score {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffd700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.kazan.pulsing .kazan-score {
+  animation: scoreBounce 0.6s ease-out;
+}
+
+@keyframes scoreBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Flying stones animation */
+.flying-stone {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.flying-stone.capture-stone {
+  width: 10px;
+  height: 10px;
+}
+
+.pit:disabled,
+.pit[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .game-board {
+    padding: 10px;
+    margin: 10px auto;
+    border-radius: 16px;
+  }
+
+  .board-header {
+    padding: 10px;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .player-info {
+    min-width: 120px;
+  }
+
+  .player-name {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .game-status {
+    min-width: 150px;
+  }
+
+  .turn-indicator {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .game-over {
+    font-size: 18px;
+    padding: 8px 16px;
+  }
+
+  .board-container {
+    padding: 10px;
+  }
+
+  .pits-container {
+    gap: 15px;
+  }
+
+  .pits-row {
+    gap: 6px;
+    max-width: 100%;
+  }
+
+  .pit {
+    min-width: 50px;
+    min-height: 35px;
+    border-width: 2px;
+  }
+
+  .kazans-center {
+    gap: 15px;
+    margin: 10px 0;
+    max-width: 100%;
+  }
+
+  .kazan {
+    width: 100px;
+    height: 70px;
+    border-width: 3px;
+  }
+
+  .kazan-label {
+    font-size: 10px;
+  }
+
+  .kazan-score {
+    font-size: 28px;
+  }
+
+  .stones-count {
+    font-size: 18px;
+  }
+
+  .pit-number {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-board {
+    padding: 8px;
+    margin: 5px auto;
+    border-radius: 12px;
+  }
+
+  .board-header {
+    padding: 8px;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-direction: column;
+  }
+
+  .player-info {
+    min-width: 100%;
+    text-align: center;
+  }
+
+  .player-name {
+    font-size: 12px;
+    padding: 5px 10px;
+    width: 100%;
+  }
+
+  .game-status {
+    min-width: 100%;
+    order: -1;
+  }
+
+  .turn-indicator {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .game-over {
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+
+  .board-container {
+    padding: 8px;
+  }
+
+  .pits-container {
+    gap: 12px;
+  }
+
+  .pits-row {
+    gap: 4px;
+    padding: 0 4px;
+  }
+
+  .pit {
+    min-width: 40px;
+    min-height: 28px;
+    border-width: 2px;
+  }
+
+  .kazans-center {
+    gap: 12px;
+    margin: 8px 0;
+    flex-direction: column;
+  }
+
+  .kazan-container {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .kazan {
+    width: 80px;
+    height: 60px;
+    border-width: 3px;
+  }
+
+  .kazan-label {
+    font-size: 9px;
+  }
+
+  .kazan-score {
+    font-size: 24px;
+  }
+
+  .stones-count {
+    font-size: 16px;
+  }
+
+  .pit-number {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .game-board {
+    padding: 5px;
+    margin: 5px auto;
+  }
+
+  .board-header {
+    padding: 6px;
+  }
+
+  .player-name {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .turn-indicator {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .pits-row {
+    gap: 3px;
+  }
+
+  .pit {
+    min-width: 35px;
+    min-height: 25px;
+  }
+
+  .kazan {
+    width: 70px;
+    height: 55px;
+  }
+
+  .kazan-label {
+    font-size: 8px;
+  }
+
+  .kazan-score {
+    font-size: 20px;
+  }
+
+  .stones-count {
+    font-size: 14px;
+  }
+
+  .pit-number {
+    font-size: 7px;
+  }
+}

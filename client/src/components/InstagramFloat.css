@@ -1,0 +1,82 @@
+.social-float-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 1000;
+}
+
+.social-float {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  color: white;
+  text-decoration: none;
+}
+
+.instagram-float {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.email-float {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.social-float:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.social-float:active {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.social-float svg {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+@media (max-width: 768px) {
+  .social-float-container {
+    bottom: 20px;
+    right: 20px;
+    gap: 12px;
+  }
+
+  .social-float {
+    width: 50px;
+    height: 50px;
+  }
+
+  .social-float svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-float-container {
+    bottom: 15px;
+    right: 15px;
+    gap: 10px;
+  }
+
+  .social-float {
+    width: 48px;
+    height: 48px;
+  }
+
+  .social-float svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+

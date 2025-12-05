@@ -1,0 +1,137 @@
+.rules-page {
+  padding: 40px 20px;
+}
+
+.page-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.rules-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.rule-section {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px var(--shadow);
+  margin-bottom: 30px;
+}
+
+.rule-section h2 {
+  font-size: 28px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  border-bottom: 3px solid var(--primary-color);
+  padding-bottom: 10px;
+}
+
+.rule-section p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+.rule-diagram {
+  margin: 30px 0;
+  padding: 20px;
+  background: var(--bg-color);
+  border-radius: 12px;
+}
+
+.board-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.diagram-kazan {
+  width: 100px;
+  height: 100px;
+  background: var(--kazan-color);
+  border: 3px solid var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--white);
+  font-size: 14px;
+  text-align: center;
+  padding: 10px;
+}
+
+.diagram-pits {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.diagram-pit {
+  width: 50px;
+  height: 50px;
+  background: var(--pit-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.rule-example {
+  margin-top: 20px;
+  padding: 15px;
+  background: var(--bg-color);
+  border-left: 4px solid var(--primary-color);
+  border-radius: 4px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.rule-example strong {
+  color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 32px;
+  }
+
+  .rule-section {
+    padding: 20px;
+  }
+
+  .rule-section h2 {
+    font-size: 24px;
+  }
+
+  .diagram-pits {
+    gap: 5px;
+  }
+
+  .diagram-pit {
+    width: 40px;
+    height: 40px;
+    font-size: 12px;
+  }
+
+  .diagram-kazan {
+    width: 80px;
+    height: 80px;
+    font-size: 12px;
+  }
+}
+
+

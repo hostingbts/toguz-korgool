@@ -1,0 +1,21 @@
+{
+  "name": "toguz-korgool",
+  "version": "1.0.0",
+  "description": "Traditional Kyrgyz board game Toguz Korgool - Online multiplayer web application",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && node index.js",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install"
+  },
+  "keywords": ["toguz-korgool", "board-game", "kyrgyz", "multiplayer"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+
+

@@ -1,0 +1,76 @@
+.play-page {
+  padding: 20px;
+}
+
+.game-controls {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.difficulty-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.difficulty-selector label {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.difficulty-selector select {
+  padding: 6px 12px;
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  font-size: 14px;
+  background: var(--white);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.difficulty-selector select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ai-thinking {
+  text-align: center;
+  padding: 15px;
+  background: var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@media (max-width: 768px) {
+  .game-controls {
+    flex-direction: column;
+  }
+
+  .difficulty-selector {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+

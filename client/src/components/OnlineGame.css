@@ -1,0 +1,163 @@
+.online-game-menu,
+.online-game-waiting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: 20px;
+}
+
+.menu-card,
+.waiting-card {
+  background: var(--white);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px var(--shadow);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.menu-card h2,
+.waiting-card h2 {
+  font-size: 28px;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  padding: 10px;
+  background: var(--bg-color);
+  border-radius: 8px;
+}
+
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ccc;
+}
+
+.status-indicator.connected {
+  background: #4CAF50;
+  animation: pulse 2s infinite;
+}
+
+.status-indicator.disconnected {
+  background: #f44336;
+}
+
+.menu-options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.join-section {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.room-code-input {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  font-size: 16px;
+  min-width: 200px;
+}
+
+.room-code-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.room-code-display {
+  margin: 30px 0;
+}
+
+.room-code-display p {
+  font-size: 16px;
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+
+.room-code {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--primary-color);
+  background: var(--bg-color);
+  padding: 20px;
+  border-radius: 8px;
+  margin: 15px 0;
+  letter-spacing: 4px;
+  font-family: monospace;
+}
+
+.online-game {
+  padding: 20px;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.player-info-online {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.player-badge {
+  padding: 10px 20px;
+  background: var(--bg-color);
+  border-radius: 8px;
+  font-weight: 600;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+
+.player-badge.active {
+  background: var(--primary-color);
+  color: var(--white);
+  border-color: var(--primary-dark);
+}
+
+.game-actions {
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .menu-card,
+  .waiting-card {
+    padding: 20px;
+  }
+
+  .game-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .player-info-online {
+    justify-content: center;
+  }
+
+  .game-actions {
+    justify-content: center;
+  }
+}
+
+

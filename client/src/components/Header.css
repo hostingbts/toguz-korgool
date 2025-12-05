@@ -1,0 +1,172 @@
+.header {
+  background: var(--primary-color);
+  color: var(--white);
+  padding: 0;
+  box-shadow: 0 2px 8px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--white);
+  transition: opacity 0.3s;
+  height: 50px;
+}
+
+.logo:hover {
+  opacity: 0.9;
+}
+
+.logo-svg {
+  height: 50px;
+  width: auto;
+  max-width: 350px;
+  color: var(--white);
+  display: block;
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.nav-link:hover {
+  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+}
+
+.language-selector {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.language-btn {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--white);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.language-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.language-btn.active {
+  background: var(--white);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 10px 15px;
+    gap: 15px;
+  }
+
+  .logo {
+    height: 45px;
+  }
+
+  .logo-svg {
+    height: 45px;
+    max-width: 300px;
+  }
+
+  .nav {
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .language-selector {
+    margin-left: 0;
+    gap: 6px;
+  }
+
+  .language-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content {
+    padding: 8px 10px;
+    gap: 12px;
+  }
+
+  .logo {
+    height: 38px;
+  }
+
+  .logo-svg {
+    height: 38px;
+    max-width: 250px;
+  }
+
+  .nav {
+    gap: 8px;
+  }
+
+  .nav-link {
+    padding: 5px 8px;
+    font-size: 13px;
+  }
+
+  .language-selector {
+    gap: 4px;
+  }
+
+  .language-btn {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+}
+
+

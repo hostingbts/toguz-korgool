@@ -1,0 +1,72 @@
+.history-page {
+  padding: 40px 20px;
+}
+
+.history-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.history-section {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px var(--shadow);
+  margin-bottom: 30px;
+}
+
+.history-section h2 {
+  font-size: 28px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  border-bottom: 3px solid var(--primary-color);
+  padding-bottom: 10px;
+}
+
+.history-section p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-color);
+  margin-bottom: 16px;
+}
+
+.history-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
+.history-text p {
+  margin-bottom: 16px;
+}
+
+.history-text strong {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.history-text a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  transition: opacity 0.3s;
+}
+
+.history-text a:hover {
+  opacity: 0.8;
+}
+
+.history-text em {
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .history-section {
+    padding: 20px;
+  }
+
+  .history-section h2 {
+    font-size: 24px;
+  }
+}
+
+

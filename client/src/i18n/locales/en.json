@@ -1,0 +1,97 @@
+{
+  "common": {
+    "language": "Language",
+    "settings": "Settings",
+    "home": "Home",
+    "play": "Play",
+    "rules": "Rules",
+    "history": "History",
+    "aboutUs": "About Us",
+    "newGame": "New Game",
+    "restart": "Restart",
+    "undo": "Undo",
+    "close": "Close"
+  },
+  "game": {
+    "title": "Toguz Korgool",
+    "subtitle": "Traditional Kyrgyz Board Game",
+    "playVsComputer": "Play vs Computer",
+    "playOnline": "Play Online",
+    "passAndPlay": "Pass & Play",
+    "yourTurn": "Your turn",
+    "opponentTurn": "Opponent's turn",
+    "whitePlayer": "White",
+    "blackPlayer": "Black",
+    "youWin": "You win!",
+    "youLose": "You lose",
+    "draw": "Draw",
+    "gameOver": "Game Over",
+    "selectDifficulty": "Select Difficulty",
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard",
+    "createRoom": "Create Room",
+    "joinRoom": "Join Room",
+    "roomCode": "Room Code",
+    "enterRoomCode": "Enter room code",
+    "waitingForPlayer": "Waiting for player...",
+    "playerJoined": "Player joined",
+    "playerLeft": "Player left",
+    "connecting": "Connecting...",
+    "disconnected": "Disconnected",
+    "reconnecting": "Reconnecting...",
+    "kazan": "Kazan",
+    "kazanWhite": "Kazan (White)",
+    "kazanBlack": "Kazan (Black)",
+    "tuz": "Tuz",
+    "stones": "stones",
+    "captured": "Captured",
+    "tuzCreated": "Tuz created!"
+  },
+  "home": {
+    "welcome": "Welcome to Toguz Korgool",
+    "description": "Experience the traditional Kyrgyz board game, also known as Toguz Korgool or Togyzkumalak. This ancient game of strategy and calculation has been played in Central Asia for centuries.",
+    "culturalSignificance": "Cultural Significance",
+    "culturalText": "Toguz Korgool is more than just a game—it's a cultural treasure of Kyrgyzstan and Central Asia. It has been used to develop mathematical thinking and strategic planning skills for generations.",
+    "howToPlay": "How to Play",
+    "playDescription": "Choose your game mode and start playing. Challenge the computer, play online with friends, or enjoy a local game on the same device."
+  },
+  "rules": {
+    "title": "Game Rules",
+    "boardSetup": "Board Setup",
+    "boardSetupText": "The board consists of 2 rows of 9 pits each (18 pits total), plus 2 large scoring pits called 'kazans'. Each player owns 9 pits on their side. Initially, each pit contains 9 stones (162 stones total).",
+    "turnMechanics": "Turn Mechanics",
+    "turnMechanicsText": "Players alternate turns, with White moving first. On your turn, choose one of your pits that is NOT a tuz. Take all stones from that pit and sow them anticlockwise, one stone per pit. If the pit you picked had more than 1 stone, the first stone goes back into that same pit; otherwise, skip it.",
+    "capturing": "Capturing",
+    "capturingText": "If the LAST stone of your move lands in one of the opponent's pits and that pit's total becomes an EVEN number, you capture ALL stones from that pit and move them into your kazan.",
+    "capturingExample": "Example: If you drop the last stone in an opponent's pit with 3 stones, it becomes 4 (even), so you capture all 4 stones.",
+    "tuz": "Tuz (Special Pit)",
+    "tuzImportant": "Important: The tuz is a powerful strategic element. Stones that land in your tuz are automatically yours!",
+    "tuzText": "If the last stone of your move lands in an opponent's pit and that pit's total becomes EXACTLY 3 stones, that pit MAY become your 'tuz' (a special capturing pit). Any stones that land in your tuz automatically belong to you and are periodically moved to your kazan. Restrictions: Each player can have only ONE tuz. You CANNOT create a tuz in the opponent's 9th (rightmost) pit. You CANNOT create a tuz in the pit that is directly opposite the opponent's existing tuz.",
+    "endGame": "End of Game",
+    "endGameText": "The game ends when one player has no legal moves (all their non-tuz pits are empty). Remaining stones on the board belong to the player on whose side they are and are added to their kazan score. The winner is the player with more stones in total (stones in kazan + stones from tuz). If both players have 81 stones, it is a draw."
+  },
+  "history": {
+    "title": "History",
+    "historyText": "<p>Although no one knows the exact date when Toguz Korgool appeared, it is part of the ancient <strong>mancala family</strong> of games, whose earliest archaeological traces go back roughly 2,000–2,500 years in the Middle East and North-East Africa. Among the Kyrgyz and other Turkic peoples of Central Asia it developed its own local form, played with small stones or sheep droppings in shallow holes scraped into the ground, on wooden boards, or even on saddlebags during long journeys.</p><p>In Kyrgyz tradition the game is closely tied to <strong>nomadic life</strong>. Travelers, shepherds and soldiers are said to have played it in camp to pass the time and to sharpen their strategic thinking; some sources even mention that it was used by army officers to practice planning and tactics. The game also appears in the great Kyrgyz epic <em>Manas</em>, where craftsmen are described carving a flat wooden board with \"nine pits on one side and nine on the other,\" suggesting that a recognizably modern form of the game was known many centuries ago.</p><p>In the 20th century Toguz Korgool and its Kazakh variant Togyzkumalak began to be <strong>standardized as a sport</strong>. The first major Soviet-era tournament for Togyzkumalak was held in 1948 in Almaty, and unified rules were codified in 1949, which later influenced competitive Toguz Korgool as well. The Toguz Korgool Federation was founded in Bishkek in 1993, and since 2010 world championships and many national and regional tournaments have been held regularly in Central Asia and Europe.</p><p>Today Toguz Korgool is officially recognized as part of the <strong>intangible cultural heritage</strong> shared by Kyrgyzstan, Kazakhstan and Turkey: in 2020 UNESCO inscribed \"Togyzqumalaq, Toguz Korgool, Mangala/Göçürme: The Traditional Game of Strategy and Intelligence\" on its Representative List of the Intangible Cultural Heritage of Humanity. From a fireside pastime of nomadic herders it has grown into an international mind sport, while still carrying the stories and values of the steppe.</p>"
+  },
+  "aboutUs": {
+    "title": "About Us",
+    "aboutUsHeading": "About Us",
+    "aboutUsContent": "<p>This website was created with one simple idea:</p><p><strong>to preserve and promote the traditional Kyrgyz board game Toguz Korgool for future generations.</strong></p><p>We are a small team of board-game enthusiasts, designers, and developers who grew up with this game as part of our culture and identity. For us, Toguz Korgool is more than just a pastime – it is a living piece of nomadic history, a way of thinking, and a bridge between generations.</p>",
+    "ourMissionHeading": "Our Mission",
+    "ourMissionContent": "<p>Our mission is to make this ancient game accessible to players worldwide through an intuitive online platform that supports multiple languages and game modes. Whether you are a beginner learning your very first moves or an experienced player preparing for tournaments, we want you to be able to:</p><ul><li>Play anytime, anywhere – on your phone, tablet, or computer</li><li>Compete against friends, other players online, or a smart computer opponent</li><li>Learn the rules, history, and strategy of Toguz Korgool in <strong>Kyrgyz, Kazakh, Russian, and English</strong></li></ul><p>By bringing Toguz Korgool into the digital world, we hope to inspire curiosity about Kyrgyz culture, connect players across borders, and help a beautiful traditional game continue to grow on the global stage.</p>"
+  },
+  "settings": {
+    "title": "Settings",
+    "soundEffects": "Sound Effects",
+    "animations": "Animations",
+    "boardTheme": "Board Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "aiDifficulty": "AI Difficulty",
+    "language": "Language"
+  }
+}
+
+
