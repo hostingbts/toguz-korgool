@@ -124,6 +124,13 @@ function OnlineGame({ onBack }) {
             <span>{connectionStatus === 'connected' ? t('game.connecting') : t('game.disconnected')}</span>
           </div>
 
+          {connectionStatus === 'disconnected' && (
+            <div className="offline-message">
+              <p className="offline-title">{t('game.onlineUnavailable')}</p>
+              <p className="offline-details">{t('game.onlineUnavailableDetails')}</p>
+            </div>
+          )}
+
           <div className="menu-options">
             <button onClick={handleCreateRoom} className="btn" disabled={connectionStatus !== 'connected'}>
               {t('game.createRoom')}

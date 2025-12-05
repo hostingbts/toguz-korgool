@@ -40,6 +40,8 @@
     "connecting": "Connecting...",
     "disconnected": "Disconnected",
     "reconnecting": "Reconnecting...",
+    "onlineUnavailable": "Online play is currently unavailable. This feature requires a backend server to be running.",
+    "onlineUnavailableDetails": "The online multiplayer feature needs a server to handle game rooms and real-time communication. Please use 'Play vs Computer' or 'Pass & Play' modes instead.",
     "kazan": "Kazan",
     "kazanWhite": "Kazan (White)",
     "kazanBlack": "Kazan (Black)",
