@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import InstagramFloat from './components/InstagramFloat';
@@ -13,8 +12,11 @@ import Settings from './pages/Settings';
 import './styles/App.css';
 
 function App() {
+  // Set basename for GitHub Pages subdirectory
+  const basename = '/toguz-korgool';
+  
   return (
-    <Router>
+    <Router basename={basename}>
       <div className="App">
         <Header />
         <main>

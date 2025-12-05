@@ -30,6 +30,15 @@
           );
         }
       }(window.location))
+      
+      // Ensure we're on the home page if at root
+      (function() {
+        var path = window.location.pathname;
+        if (path === '/toguz-korgool/' || path === '/toguz-korgool' || path === '/') {
+          // Already at root, let React Router handle it
+          return;
+        }
+      })();
     </script>
   </head>
   <body>
