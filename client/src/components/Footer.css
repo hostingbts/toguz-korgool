@@ -1,10 +1,10 @@
 .footer {
-  background: var(--primary-color);
+  background: var(--accent-color);
   color: var(--white);
   padding: 20px 0;
   margin-top: auto;
   text-align: center;
-  border-top: 2px solid var(--primary-dark);
+  border-top: 2px solid var(--button-text);
 }
 
 .footer-content {

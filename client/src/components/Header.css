@@ -1,5 +1,5 @@
 .header {
-  background: var(--primary-color);
+  background: var(--accent-color);
   color: var(--white);
   padding: 0;
   box-shadow: 0 2px 8px var(--shadow);
